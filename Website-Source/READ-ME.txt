@@ -1,0 +1,83 @@
+DERMALAB - OFFLINE WEBSITE
+========================
+
+HOW TO OPEN
+1. Extract the ZIP completely (right-click > Extract All).
+2. Open index.html in Google Chrome or Microsoft Edge.
+   You can also double-click START-WEBSITE.bat.
+3. No MATLAB, Python, Node, installation or internet is needed.
+4. Keep index.html, style.css, app.js, engine.js and samples.js together.
+
+ONE-FILE OPTION
+DermaLab-Offline.html is a self-contained copy with all styles, scripts
+and sample images inside it. You can copy just this file to a USB drive
+and open it in Chrome/Edge. Pick one opening method and keep using it,
+because browser-local records may differ between the two HTML files.
+After source edits, developers can regenerate it with:
+node build-standalone.cjs
+
+PRESENTATION DEMO
+1. Click Load presentation demo. Fictional patient details are filled in.
+2. Click Run analysis.
+3. Explain Original > Preprocessed > Segmentation > Region overlay.
+4. Explain the computed image features and the original brightness rule.
+5. Click Create report, then Save on this device.
+6. Click Print / PDF and choose Save as PDF in the browser print dialog.
+7. Open Saved reports to review the report, or Download JSON to export it.
+
+CUSTOM INPUT
+From Home, choose REGISTER PATIENT, then use PATIENT LOGIN.
+The Health Data Collection screen fills your name/mobile automatically.
+Enter readings and click SAVE DATA, then select an image and Run analysis.
+The Try presentation demo button on Home skips registration for a demo.
+Use fictional details and a unique demo password, not real credentials.
+
+OFFLINE STORAGE
+Saved reports/accounts belong to this browser and device. They are not
+synced. Browser storage can be cleared or blocked. Moving this folder or
+opening it in another browser may make old local records unavailable.
+Download JSON/PDF copies of any report you need to keep.
+Passwords are PBKDF2-hashed; local demo records are not encrypted.
+
+WHAT WAS CONVERTED
+- MATLAB patient entry GUI -> browser forms with validation.
+- Registration/login -> optional device-local demo accounts.
+- Image input -> offline upload/drop and 3 embedded supplied samples.
+- Statistics -> computed original RGB mean, sample standard deviation,
+  histogram entropy, population skewness and Pearson kurtosis.
+- Analysis.m classification -> same rounded-mean branches, including
+  the special Normal overrides for 163 and 203.
+- MATLAB processing display -> browser grayscale/diffusion/Otsu/largest
+  connected-region processing, with boundary and bounding-box overlay.
+- MAT/PDF output -> saved browser records, JSON export, browser Print/PDF.
+
+IMPORTANT PROJECT LIMITATIONS
+This is an academic software demonstration, not a diagnostic tool.
+The supplied Analysis.m decides disease labels using image brightness.
+Its 99.21/99.34/99.49 performance numbers are hard-coded, not evaluation
+results. They are deliberately not represented as measured accuracy.
+The supplied svm.m implements active contours, not SVM model training.
+The browser segmentation is a replacement pipeline and is not a
+pixel-identical reproduction of MATLAB PCA/wavelet/active-contour code.
+Protected .p files are not executed. No trained medical model is claimed.
+Treatment advice is omitted. Existing patient .mat files and Firebase
+credentials/destination are not loaded, copied into the website or used.
+Dataset sample images are supplied archive assets; original marks remain.
+
+SOURCE FILES
+index.html      Page layout and presentation explanation
+style.css       Responsive layout and print styles
+engine.js       Statistics, classification rules and image processing
+app.js          UI, upload, local profiles, reports and downloads
+samples.js      Three embedded images from the supplied Dataset folder
+test-engine.cjs Optional developer tests (node test-engine.cjs)
+
+See PRESENTATION-NOTES.txt for a short explanation to present.
+
+UPDATED SEPARATE SCREENS
+Open the website to start at Home. Register Patient opens a separate
+registration screen. Register, then log in on the separate Patient Login
+screen. Health Data Collection displays your name/mobile automatically.
+SAVE DATA stores the readings locally and opens Skin Analysis.
+CLEAR ALL clears readings while keeping the logged-in patient identity.
+Exit to home logs out. The presentation demo remains available on Home.

@@ -1,0 +1,49 @@
+PROJECT: Health Monitoring and Skin Image Analysis
+
+OPENING (about 20 seconds)
+"Our project combines patient health readings and skin image processing
+in one browser application. We converted the MATLAB interface into an
+offline website so the demonstration does not require MATLAB or internet."
+
+DEMO (about 2 minutes)
+1. Click Load presentation demo.
+   "This fills fictional patient details and a dataset sample."
+2. Show Patient & vitals.
+   "We collect blood pressure, sugar, heart rate, oxygen saturation,
+   cholesterol and temperature, with input validation."
+3. Return to Skin analysis. Click Run analysis.
+   "We convert the image to grayscale and apply anisotropic diffusion
+   to smooth noise. Otsu thresholding separates darker pixels, and the
+   largest connected region is shown as a mask and boundary overlay."
+4. Show Image features.
+   "Mean, standard deviation, entropy, skewness and kurtosis are computed
+   from the original image pixels."
+5. Show Rule output.
+   "For compatibility, the original MATLAB brightness-based rules are
+   reproduced. This label is not a medical diagnosis."
+6. Create report > Save on this device > Print / PDF.
+   "The report combines patient readings, image features and the demo
+   result. We can save it locally or export it without a server."
+
+IF ASKED: IS THIS MACHINE LEARNING?
+"The supplied project used brightness thresholds for the final labels.
+We preserved those rules transparently. A trained and validated medical
+classifier is future work; this version demonstrates the software flow."
+
+IF ASKED: WHAT IS THE ACCURACY?
+"We have not measured diagnostic accuracy. The original displayed values
+were fixed constants, so we do not claim those as evaluated results."
+
+IF ASKED: WHY DIFFERENT FROM MATLAB OUTPUT IMAGES?
+"The website implements a browser-native processing pipeline. It replaces
+the MATLAB toolbox processing, so segmentation is not pixel-identical.
+The final brightness-rule classification logic is preserved."
+
+IF ASKED: WHICH TECHNOLOGY?
+"HTML and CSS provide the interface. JavaScript and Canvas process the
+images. Browser local storage saves demo records. It has no dependency
+on an online API, MATLAB runtime or external image-processing library."
+
+FUTURE WORK
+Validated labeled data; a trained classifier with held-out evaluation;
+secure server-side identity and encrypted storage if clinically deployed.

@@ -1,0 +1,53 @@
+DERMALAB - COMPLETE SOURCE PACKAGE FOR PROJECT REVIEW
+
+RUN THE WEBSITE
+Extract this ZIP completely. Double-click OPEN-WEBSITE.html and open it
+in Chrome or Edge. All website code and 3 sample images are embedded in
+that single file. No internet, MATLAB, Node or installation is required.
+
+SHOW THE CODE IN VS CODE
+File > Open Folder > select the extracted DermaLab-Full-Project folder.
+
+Website-Source/index.html : separate Home, Register, Login, Health Data,
+                           Skin Analysis and Report interfaces
+Website-Source/style.css  : all design, mobile layout and print styles
+Website-Source/app.js     : registration/login, validation, image upload,
+                           local records, reports and JSON/PDF actions
+Website-Source/engine.js  : statistics, segmentation and classification
+Website-Source/samples.js : embedded sample image data
+MATLAB-Original/          : supplied MATLAB .m code, protected .p files,
+                           GUI figure and data.mat / FinalData.mat
+Dataset/                 : all supplied dataset images for upload demos
+
+For editable multi-file development, open Website-Source/index.html
+in the browser. Save changes in VS Code, then refresh the browser.
+OPEN-WEBSITE.html is a packaged snapshot. After changing source files,
+developers with Node can run this from Website-Source:
+node build-standalone.cjs
+This regenerates Website-Source/DermaLab-Offline.html. Copy that generated
+file over OPEN-WEBSITE.html if you want to refresh the top-level snapshot.
+
+CLASSIFICATION OUTPUTS
+The website has all original Analysis.m classification branches:
+- Normal: rounded RGB mean equals 203 or 163
+- Malignant / SSM: rounded mean above 130 and below 150
+- Malignant / NM: rounded mean from 150 to below 170, except 163
+- Benign / Psoriasis: all other values
+Normal is not the only implemented output. The selected image determines
+which brightness rule is used. These are original academic project rules,
+not validated medical predictions. There is no trained diagnostic model.
+
+REVIEW WALKTHROUGH
+Home > New patient > Create account > Log in > enter health readings >
+SAVE DATA > choose an image > Run analysis > Create report > Print/PDF.
+Or choose Explore the demo from Home for the fictional demo patient.
+See Website-Source/PRESENTATION-NOTES.txt for explanation and Q&A.
+
+SOURCE LIMITS
+The original .p files are protected MATLAB binaries, not readable source.
+The website uses the browser-native processing pipeline documented in
+Project workflow and does not execute MATLAB code. Saved patient accounts,
+personal health records and generated patient reports from the original
+archive are not included; they are data, not project source code.
+The original MATLAB Analysis.m contains its original Firebase upload code.
+The offline website does not contact that destination.
